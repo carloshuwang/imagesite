@@ -6,7 +6,7 @@ WORKDIR /src/frontend
 RUN npm config set registry https://registry.npmmirror.com
 RUN npm install && npm run build
 
-FROM python:alpine as prod
+FROM python:3.12-alpine as prod
 COPY ./backend /src/backend
 COPY --from=builder /src/frontend/dist /src/backend/dist
 WORKDIR /src/backend
